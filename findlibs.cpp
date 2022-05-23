@@ -4,13 +4,6 @@
 #include <string.h>
 #include <errno.h>
 
-#include <unistd.h>
-#include <sys/fcntl.h>
-#include <sys/mman.h>
-#include <sys/param.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-
 #define ERR(fmt, ...) fprintf(stderr, fmt "\n", ##__VA_ARGS__)
 #define LOG(fmt, ...) fprintf(stdout, fmt "\n", ##__VA_ARGS__)
 #define LOGN(fmt, ...) fprintf(stdout, fmt, ##__VA_ARGS__)
@@ -89,10 +82,6 @@ static void ldsocache_close(LinkerCacheFile* cache) {
         free(cache);
     }
 }
-
- #define ALIGN_CACHE(addr) \
-    (((addr) + __alignof__ (CacheFileHeader_New) -1) & (~(__alignof__ (CacheFileHeader_New) - 1)))
-
 
 static LinkerCacheFile* ldsocache_open(char const* path = NULL) {
     ChacheFileHeader_Old header_old[1] = {};
