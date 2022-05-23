@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p build
+gcc -W -Wall -g -ggdb -static -mtune=generic findlibs.cpp -o build/findlibs
