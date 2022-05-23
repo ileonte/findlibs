@@ -217,6 +217,8 @@ static inline void ldsocache_free_paths(LibraryPaths* paths) {
         for (size_t i = 0; i < paths->search_dir_count; i++)
             free(paths->search_dirs[i]);
         free(paths->search_dirs);
+
+        free(paths);
     }
 }
 
